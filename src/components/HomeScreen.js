@@ -4,7 +4,7 @@ export function renderHomeScreen({ onNavigate, onSelectCourse }) {
       <!-- PWA Install Banner (Android) -->
       <div id="pwa-install-banner" class="pwa-banner" style="display: none;">
         <div style="display: flex; align-items: center; gap: 10px;">
-          <img src="/logo.png" style="width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid var(--orange-accent); background: white;" alt="Icon" />
+          <img src="${import.meta.env.BASE_URL}logo.png" style="width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid var(--orange-accent); background: white;" alt="Icon" />
           <div>
             <div style="font-weight: 700; font-size: 13px;">Install Srishti Android App</div>
             <div style="font-size: 11px; color: var(--text-muted);">Fast access, offline status & notifications</div>
@@ -16,7 +16,7 @@ export function renderHomeScreen({ onNavigate, onSelectCourse }) {
       <!-- Hero Header Card -->
       <section class="card hero-section" style="text-align: center; padding: 28px 18px; border-color: rgba(0, 229, 255, 0.3);">
         <div style="width: 96px; height: 96px; border-radius: 50%; background: #ffffff; border: 3px solid var(--orange-accent); margin: 0 auto 14px; padding: 3px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(255, 107, 0, 0.35);">
-          <img src="/logo.png" alt="Srishti Computer Institute Logo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" />
+          <img src="${import.meta.env.BASE_URL}logo.png" alt="Srishti Computer Institute Logo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" />
         </div>
         
         <h2 style="font-family: var(--font-heading); font-size: 22px; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 6px;">

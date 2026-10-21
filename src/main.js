@@ -29,7 +29,8 @@ let deferredPrompt = null;
 // PWA Service Worker Registration & Installation
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').catch(err => {
+    const swUrl = (import.meta.env.BASE_URL || './') + 'sw.js';
+    navigator.serviceWorker.register(swUrl).catch(err => {
       console.log('SW registration note:', err);
     });
   });
@@ -85,7 +86,7 @@ function renderApp() {
       <div class="header-inner">
         <div class="header-brand" id="brand-home-click">
           <div class="header-logo">
-            <img src="/logo.png" alt="Srishti Logo" />
+            <img src="${import.meta.env.BASE_URL}logo.png" alt="Srishti Logo" />
           </div>
           <div class="brand-text">
             <h1>SRISHTI COMPUTER INSTITUTE</h1>

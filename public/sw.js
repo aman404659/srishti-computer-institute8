@@ -1,11 +1,14 @@
-const CACHE_NAME = 'srishti-pwa-v1';
+const CACHE_NAME = 'srishti-pwa-v2';
+// Dynamically compute base path from current service worker location
+const BASE = self.location.pathname.replace(/\/sw\.js$/, '/');
+
 const ASSETS_TO_CACHE = [
-  '/',
-  '/index.html',
-  '/logo.png',
-  '/icon-192.png',
-  '/icon-512.png',
-  '/manifest.webmanifest'
+  BASE,
+  BASE + 'index.html',
+  BASE + 'logo.png',
+  BASE + 'icon-192.png',
+  BASE + 'icon-512.png',
+  BASE + 'manifest.webmanifest'
 ];
 
 self.addEventListener('install', (event) => {
@@ -34,14 +37,14 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
 
   // Skip caching API routes or non-GET requests
-  if (event.request.method !== 'GET' || url.pathname.startsWith('/api/')) {
+  if (event.request.method !== 'GET' || url.pathname.includes('/api/')) {
     return;
   }
 
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
       if (cachedResponse) {
-        // Return cached and update in background
+        // Background cache update
         fetch(event.request).then((networkResponse) => {
           if (networkResponse && networkResponse.status === 200) {
             caches.open(CACHE_NAME).then((cache) => {
@@ -64,7 +67,7 @@ self.addEventListener('fetch', (event) => {
       }).catch(() => {
         // If offline and requesting html, return cached index
         if (event.request.headers.get('accept')?.includes('text/html')) {
-          return caches.match('/index.html');
+          return caches.match(BASE + 'index.html') || caches.match(BASE);
         }
       });
     })

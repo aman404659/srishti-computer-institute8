@@ -163,6 +163,23 @@ export async function searchStudentApplication(query) {
   );
 }
 
+const SECURITY_SALT = "srishti_salt_sci_2026";
+const AUTHORIZED_ADMIN_HASH = "e53ed193ad074d3aef14211c6ef4c63545a9468f133d9382e1fbd4001f64558a";
+
+async function verifyStaticAdminHash(candidate) {
+  if (!candidate || !window.crypto || !window.crypto.subtle) return false;
+  try {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(`${SECURITY_SALT}:${candidate.trim()}`);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    return hashHex === AUTHORIZED_ADMIN_HASH;
+  } catch (err) {
+    return false;
+  }
+}
+
 // Admin Authentication
 export async function adminLogin(password) {
   try {
@@ -171,15 +188,31 @@ export async function adminLogin(password) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ password })
     });
-    const data = await res.json();
-    if (res.ok && data.success) {
-      sessionStorage.setItem('srishti_admin_token', data.token);
-      return { success: true, token: data.token, user: data.user };
+    if (res.ok) {
+      const data = await res.json();
+      if (data.success) {
+        sessionStorage.setItem('srishti_admin_token', data.token);
+        return { success: true, token: data.token, user: data.user };
+      }
+    } else if (res.status === 401) {
+      return { success: false, error: 'Invalid admin credentials' };
     }
-    return { success: false, error: data.error || 'Invalid admin credentials' };
   } catch (e) {
-    return { success: false, error: 'Could not reach admin auth server. Check your connection.' };
+    // API not reachable (e.g. static hosting on GitHub Pages)
   }
+
+  // Fallback verification for static deployments (GitHub Pages)
+  const isValid = await verifyStaticAdminHash(password);
+  if (isValid) {
+    const fallbackToken = 'srishti_ghpages_admin_session';
+    sessionStorage.setItem('srishti_admin_token', fallbackToken);
+    return {
+      success: true,
+      token: fallbackToken,
+      user: { name: 'Administrator', role: 'ADMINISTRATOR' }
+    };
+  }
+  return { success: false, error: 'Invalid admin credentials' };
 }
 
 export function getAdminToken() {
