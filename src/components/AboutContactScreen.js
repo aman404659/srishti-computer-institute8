@@ -1,3 +1,5 @@
+const BASE_URL = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.BASE_URL) ? import.meta.env.BASE_URL : './';
+
 export function renderAboutContactScreen() {
   return `
     <div class="screen-container">
@@ -13,7 +15,7 @@ export function renderAboutContactScreen() {
       <!-- Institute Identity Card -->
       <section class="card" style="text-align: center; padding: 24px 16px;">
         <div style="width: 80px; height: 80px; border-radius: 50%; background: #ffffff; border: 3px solid var(--orange-accent); margin: 0 auto 12px; padding: 3px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 16px rgba(255, 107, 0, 0.35);">
-          <img src="${import.meta.env.BASE_URL}logo.png" alt="Srishti Computer Institute Logo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" />
+          <img src="${BASE_URL}logo.png" alt="Srishti Computer Institute Logo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" />
         </div>
         <h3 style="font-family: var(--font-heading); font-size: 18px; font-weight: 800; margin-bottom: 4px;">
           SRISHTI COMPUTER INSTITUTE

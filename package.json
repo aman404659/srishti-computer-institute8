@@ -6,7 +6,7 @@
   "description": "SRISHTI COMPUTER INSTITUTE - Official Web Portal and Mobile App",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && cp dist/index.html dist/404.html",
+    "build": "vite build && cp dist/index.html dist/404.html && rm -rf docs && cp -r dist docs",
     "preview": "vite preview"
   },
   "devDependencies": {
