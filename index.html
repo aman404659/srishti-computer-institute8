@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SRISHTI COMPUTER INSTITUTE - LEARN • PRACTICE • GROW</title>
+  <meta name="description" content="Official Portal for SRISHTI COMPUTER INSTITUTE, Mandhana, Kanpur Nagar. Computer Courses, Online Admission, Student Portal & Certifications." />
+  <link rel="icon" type="image/png" href="/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy-dark: #0A192F;
+      --navy-midnight: #0F2042;
+      --navy-surface: #132347;
+      --navy-border: #233D70;
+      --neon-cyan: #00E5FF;
+      --cyan-container: #063750;
+      --orange-accent: #FF6B00;
+      --orange-container: #431D03;
+      --white-pure: #FFFFFF;
+      --text-secondary: #CBD5E1;
+      --text-muted: #94A3B8;
+      --success-green: #10B981;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--navy-dark);
+      color: var(--white-pure);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Container */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px 16px 40px;
+    }
+
+    /* Header & Logo */
+    .hero-card {
+      background: var(--navy-midnight);
+      border: 1px solid var(--navy-border);
+      border-radius: 20px;
+      padding: 32px 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      top: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(0, 229, 255, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .logo-frame {
+      width: 104px;
+      height: 104px;
+      border-radius: 50%;
+      background: var(--white-pure);
+      border: 3px solid var(--orange-accent);
+      margin: 0 auto 16px;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 25px rgba(255, 107, 0, 0.35);
+    }
+
+    .logo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: var(--white-pure);
+      margin-bottom: 8px;
+    }
+
+    .tagline-badge {
+      display: inline-block;
+      background: var(--orange-container);
+      color: var(--orange-accent);
+      border: 1px solid var(--orange-accent);
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 2px;
+      padding: 6px 18px;
+      border-radius: 24px;
+      margin-top: 6px;
+    }
+
+    /* Quick Actions */
+    .actions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      text-align: center;
+      border: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-call {
+      background: var(--cyan-container);
+      color: var(--neon-cyan);
+      border: 1.5px solid var(--neon-cyan);
+    }
+
+    .btn-whatsapp {
+      background: var(--success-green);
+      color: var(--white-pure);
+    }
+
+    .btn-website {
+      background: var(--navy-surface);
+      color: var(--white-pure);
+      border: 1.5px solid var(--neon-cyan);
+      width: 100%;
+      margin-bottom: 16px;
+      font-size: 15px;
+    }
+
+    .btn-maps {
+      background: var(--orange-accent);
+      color: var(--white-pure);
+      width: 100%;
+      font-size: 14px;
+      font-weight: 800;
+      margin-top: 14px;
+    }
+
+    .btn-social {
+      background: var(--navy-surface);
+      color: var(--white-pure);
+      border: 1.2px solid var(--navy-border);
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .btn-wa-group {
+      border-color: var(--success-green);
+    }
+
+    .btn-telegram {
+      border-color: #0088CC;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--navy-midnight);
+      border: 1px solid var(--navy-border);
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 18px;
+    }
+
+    .card-title {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-title.cyan { color: var(--neon-cyan); }
+    .card-title.orange { color: var(--orange-accent); }
+
+    /* Directory Row */
+    .directory-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(35, 61, 112, 0.5);
+    }
+
+    .directory-row:last-child {
+      border-bottom: none;
+    }
+
+    .dir-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .icon-box {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--navy-surface);
+      border: 1px solid var(--navy-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .dir-label {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .dir-value {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--white-pure);
+    }
+
+    .dir-btn {
+      padding: 6px 14px;
+      background: var(--cyan-container);
+      color: var(--neon-cyan);
+      border: 1px solid var(--neon-cyan);
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* Address Box */
+    .address-box {
+      background: var(--navy-surface);
+      border: 1px solid var(--navy-border);
+      border-radius: 12px;
+      padding: 16px;
+      margin-top: 10px;
+    }
+
+    .address-text {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--white-pure);
+      line-height: 1.5;
+    }
+
+    /* Courses Preview Section */
+    .course-chips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .course-chip {
+      background: var(--navy-surface);
+      border: 1px solid var(--navy-border);
+      border-radius: 12px;
+      padding: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .course-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--white-pure);
+    }
+
+    .course-meta {
+      font-size: 11px;
+      color: var(--neon-cyan);
+    }
+
+    .course-fee {
+      background: rgba(255, 209, 102, 0.15);
+      color: #FFD166;
+      border: 1px solid #FFD166;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-weight: 800;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 12px;
+      padding: 24px 0 10px;
+    }
+
+    @media (max-width: 500px) {
+      .actions-grid {
+        grid-template-columns: 1fr;
+      }
+      h1 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header Hero Card -->
+    <header class="hero-card">
+      <div class="logo-frame">
+        <img src="/logo.png" alt="Srishti Computer Institute Logo" />
+      </div>
+      <h1>SRISHTI COMPUTER INSTITUTE</h1>
+      <div class="tagline-badge">LEARN • PRACTICE • GROW</div>
+    </header>
+
+    <!-- Primary Quick Actions -->
+    <div class="actions-grid">
+      <a href="tel:8953994687" class="btn btn-call">
+        📞 Call Now
+      </a>
+      <a href="https://wa.me/918953994687" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
+        💬 WhatsApp
+      </a>
+    </div>
+
+    <!-- Official Website Button -->
+    <a href="https://sites.google.com/view/srishti-computer-institute/home" target="_blank" rel="noopener noreferrer" class="btn btn-website">
+      🌐 Visit Our Website
+    </a>
+
+    <!-- Official Groups & Channels -->
+    <section class="card">
+      <div class="card-title cyan">OFFICIAL GROUPS & CHANNELS</div>
+      <a href="https://chat.whatsapp.com/L9Z8gxRL7QX3dJD3EEMBqO?s=cl&p=a&mlu=4&ilr=4&iam=2" target="_blank" rel="noopener noreferrer" class="btn btn-social btn-wa-group">
+        👥 Join WhatsApp Group
+      </a>
+      <a href="https://t.me/SrishtiComputerInstitute" target="_blank" rel="noopener noreferrer" class="btn btn-social btn-telegram">
+        ✈️ Join Telegram Channel
+      </a>
+    </section>
+
+    <!-- Direct Contact Numbers -->
+    <section class="card">
+      <div class="card-title orange">DIRECT CONTACT NUMBERS</div>
+      <div class="directory-row">
+        <div class="dir-left">
+          <div class="icon-box">📱</div>
+          <div>
+            <div class="dir-label">Mobile Number</div>
+            <div class="dir-value">8953994687</div>
+          </div>
+        </div>
+        <a href="tel:8953994687" class="dir-btn">Call</a>
+      </div>
+      <div class="directory-row">
+        <div class="dir-left">
+          <div class="icon-box">💬</div>
+          <div>
+            <div class="dir-label">WhatsApp Number</div>
+            <div class="dir-value">8953994687</div>
+          </div>
+        </div>
+        <a href="https://wa.me/918953994687" target="_blank" rel="noopener noreferrer" class="dir-btn">Chat</a>
+      </div>
+    </section>
+
+    <!-- Campus Location Section -->
+    <section class="card">
+      <div class="card-title orange">INSTITUTE ADDRESS & CAMPUS LOCATION</div>
+      <div class="address-box">
+        <div class="address-text">
+          📍 Bagdaudhi Kachhar Kothi, Mandhana, Kanpur Nagar, Uttar Pradesh, India
+        </div>
+      </div>
+      <a href="https://share.google/tSYX6LZlGeJInp8cv" target="_blank" rel="noopener noreferrer" class="btn btn-maps">
+        📍 View Institute on Google Maps
+      </a>
+    </section>
+
+    <!-- Popular Courses Fee Structure -->
+    <section class="card">
+      <div class="card-title cyan">POPULAR COMPUTER COURSES & FEE TIERS</div>
+      <div class="course-chips-grid">
+        <div class="course-chip">
+          <div>
+            <div class="course-name">ADCA (Advance Diploma in Computer App)</div>
+            <div class="course-meta">AI03 • 12 Months</div>
+          </div>
+          <div class="course-fee">₹1,299</div>
+        </div>
+        <div class="course-chip">
+          <div>
+            <div class="course-name">DCA (Diploma in Computer Application)</div>
+            <div class="course-meta">AI01 • 6 Months</div>
+          </div>
+          <div class="course-fee">₹1,299</div>
+        </div>
+        <div class="course-chip">
+          <div>
+            <div class="course-name">Certificate in TALLY Prime & GST</div>
+            <div class="course-meta">AI08 • 6 Months</div>
+          </div>
+          <div class="course-fee">₹1,299</div>
+        </div>
+        <div class="course-chip">
+          <div>
+            <div class="course-name">Certificate in Electrician</div>
+            <div class="course-meta">AI91 • 6 Months</div>
+          </div>
+          <div class="course-fee">₹1,599</div>
+        </div>
+        <div class="course-chip">
+          <div>
+            <div class="course-name">Certificate in Montessori Teacher Training</div>
+            <div class="course-meta">AI238 • 12 Months</div>
+          </div>
+          <div class="course-fee">₹2,000</div>
+        </div>
+        <div class="course-chip">
+          <div>
+            <div class="course-name">Early Childhood Care & Education (ECCE)</div>
+            <div class="course-meta">AI225 • 24 Months</div>
+          </div>
+          <div class="course-fee">₹3,500</div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2026 SRISHTI COMPUTER INSTITUTE. All rights reserved.<br />
+      Mandhana, Kanpur Nagar, Uttar Pradesh, India
+    </footer>
+  </div>
+</body>
+</html>

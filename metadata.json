@@ -1,0 +1,6 @@
+{
+  "name": "Srishti Computer Institute",
+  "description": "Official mobile portal for Srishti Computer Institute featuring courses, admissions, bilingual Hindi/English support, student document vault, and administrator management dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
